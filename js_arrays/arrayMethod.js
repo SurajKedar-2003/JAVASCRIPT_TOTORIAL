@@ -57,7 +57,7 @@ console.log(names.reverse());
  //11 splice() - insert and delete elements of an array
  //splice(start, deleteElementCount, addElement);
 
- let c1 = names.splice(2, 0, 'ram', 'sham');
+ let c1 = names.splice(2, 2, 'ram', 'sham');
  console.log(names);
 
 //12 - concat()-it joins 2 array
@@ -68,4 +68,10 @@ console.log(names.reverse());
  console.log(arr3);
 
 
- //
+ //13 - join() - join the array and convert it into string
+ const newArr = arr1.join();
+ console.log(newArr);
+ console.log(typeof newArr);
+
+ let c3 = names.splice(2, 2, 'shaktiman', 'superman');
+ console.log(c3);
