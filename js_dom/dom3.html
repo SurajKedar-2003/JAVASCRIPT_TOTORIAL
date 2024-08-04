@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+    <ul class="language">
+        <li>javascript</li>
+    </ul>
+    
+
+    <script>
+        function addLanguage(langName){
+            const li = document.createElement('li')
+            li.innerHTML = `${langName}`
+            document.querySelector('.language').appendChild(li)
+        }
+    
+        addLanguage('python')
+        addLanguage("typescript")
+
+        function addOptLanguage(langName){
+            const li = document.createElement('li');
+            li.appendChild(document.createTextNode(langName)); //this is optimized approach
+
+            document.querySelector('.language').appendChild(li)
+        }
+
+        addOptLanguage("golang");
+
+        //edit
+
+        const secondLang = document.querySelector("li:nth-child(2)");
+        console.log(secondLang);
+        //secondLang.innerHTML = "mojo"; --> this approch is not optimized because innerHTMl traverse whole tree
+
+        const newLi = document.createElement('li')
+        newLi.textContent = 'Mojo' //this also work like innerHTMl
+
+        secondLang.replaceWith(newLi);
+        
+        //edit 
+
+        const firLang = document.querySelector("li:first-child");
+        firLang.outerHTML = "<li>typescirpt</li>"
+
+
+        //remove
+        const lastLang = document.querySelector('li:first-child');
+        lastLang.remove()
+
+
+    </script>
+</body>
+
+</html>
