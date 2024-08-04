@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>settimeout</title>
+</head>
+<body>
+    <h1 class="heading">Suraj Kedar</h1>
+    <button id="stop">stop</button>
+    <script>
+        // setTimeout(()=>{
+        //     console.log('suraj');
+        // }, 2000)
+        //also we can pass the reference of already declare function
+        const changeText = function (){
+            document.querySelector('.heading').innerHTML = 'Web developer'
+        }
+
+        const changeMe = setTimeout(changeText, 2000);
+
+        //also we can stop the timeout function using clear timeout for that we have to pass the reference the timeout function 
+
+        document.getElementById('stop').addEventListener('click', function(){
+            console.log('timeout stopped');
+            clearTimeout(changeMe);
+        })
+        
+    </script>
+</body>
+</html>

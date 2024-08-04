@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>html events</title>
+</head>
+<body>
+    <h2>Amazing image</h2>
+    <div>
+        <ul id="images">
+            <li><img width="200px" src="image/img1.jpg" alt="img1" id="sunset"></li>
+            <li><img width="200px" src="image/img2.jpg" alt="img2" id="mountain"></li>
+            <li><img width="200px" src="image/img3.jpg" alt="img3" id="butterfly"></li>
+            <li><img width="200px" src="image/sneaker 6.jpeg" alt="img4" id="white_sneker"></li>
+            <li><img width="200px" src="image/sneaker 8.jpeg" alt="img5" id="blue_sneker"></li>
+            <li><a href="http://google.com" id="google">google</a></li>
+        </ul>
+    </div>
+
+    <script>
+
+        //** at time of scalling onclick will be some issue
+        //FOR THIS WE ALWAYS USE EVENTLISTENER - event listener always give you the ability to listen as well as propogate the event
+        // document.getElementById('butterfly').onclick = function(){
+        //     alert('butterfly clicked')
+        // }
+        
+
+
+        //best use approach
+        //third parameter is by default false
+        //it is very important with interview perspective
+        
+        //attachEvent() - is also used for event handling - when internet explore is their
+
+        document.getElementById('butterfly').addEventListener('click', function(e){
+          //e - event object
+          console.log(e);
+
+
+
+        }, false)
+//what we have to study in events
+        /**
+         type, timestamp, defaultPrevented
+         target, toElement, srcElement, currentTarget
+
+         clientX, clientY, screenX, screenY and position related - imp for interview
+
+         altkey, ctrlkey, shiftkey,
+        **/
+
+        //event propogation -->->
+            //event bubbling(this is occurs when third parameter is FALSE) - is approach work from inside to outside, it propogate the event from inside to outside
+            //in below eg., first click on mountain and after that click on ul
+
+            //event capturing(this is occurs when third parameter is TRUE) - this is approach work from outside to inside, it propogate the event from outside to inside
+            //in below eg., first clicked on upper (ul) after that clicked on inside(img)
+
+            //suppose we have to stop propogation the use e.stoPropogation()
+
+        // document.getElementById('images').addEventListener('click', function(e){
+        //     console.log('clicked inside the ul');
+        // }, false)
+        // document.getElementById('mountain').addEventListener('click', function(e){
+        //     console.log('mountain clicked');
+        //     e.stopPropagation();
+        // }, false)
+
+        // document.getElementById('google').addEventListener('click', function(e){
+        //     console.log('google click');
+        //     e.preventDefault()
+        // }, false)
+
+        //task to remove the image on click
+
+        document.getElementById('images').addEventListener('click', function(e){
+            // console.log(e.target);// it gives the target element where we click
+            console.log(e.target.parentNode);
+            console.log(e.target.tagName);
+
+            if(e.target.tagName === "IMG"){
+                let removeIt = e.target.parentNode;
+                removeIt.remove();
+            }
+           
+
+            // removeIt.parentNode.removeChild(removeIt); -> we can use like this also
+
+
+        }, false)
+    </script>
+    
+</body>
+</html>

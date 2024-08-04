@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>set Interval</title>
+</head>
+<body>
+    <h1 class="heading">Suraj Kedar</h1>
+    <button id="start">start</button>
+    <button id="stop">stop</button>
+</body>
+<script>
+    //setIntraval is function used to continuous execution after some time
+
+    // setInterval(()=>{
+    //     console.log('suraj');
+
+    // }, 1000)
+
+    // const sayHi = function (){
+    //     console.log('hello');
+    // }
+    // setInterval(sayHi, 1000)
+    const changeText = function(){
+        let changedText = (Math.floor(Math.random()*10+1));
+        console.log(changedText);
+        document.querySelector('.heading').innerHTML = changedText;
+    }
+    let intervalSet;
+    document.getElementById('start').addEventListener('click', ()=>{
+        if(!intervalSet){
+            intervalSet = setInterval(changeText, 1000);
+        }
+       
+    })
+
+    document.getElementById('stop').addEventListener('click', ()=>{
+        clearInterval(intervalSet);
+        intervalSet = null;
+    })
+</script>
+</html>
