@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Api request</title>
+</head>
+<body>
+    <!-- NOTES
+     readyState in xmlhttp request
+     0 unset - client has been created open() not call yet
+     1 opened - open has called
+     2 header_received - send() has been called, and header and status are available
+     3 loading - downloading; responseText holds partial data
+     4 Done - operation complete -->
+</body>
+<script>
+    const requestUrl = 'https://randomuser.me/api/';
+    const xhr = new XMLHttpRequest();
+    xhr.open('GET', requestUrl);
+    xhr.onreadystatechange = function(){
+        console.log(xhr.readyState); 
+        if(xhr.readyState === 4){
+            const data = JSON.parse(this.responseText);//convert response into json because most of the time response is String
+            console.log(data.results[0].name.title);
+            console.log(data.results[0].name.first);
+            console.log(data.results[0].name.last);
+            console.log(data.results[0].email);
+            
+        } 
+    }
+    xhr.send();
+</script>
+<!-- NOTES:
+    ****imp 
+    console, document is not the part of core javascript
+    this is debugging tools of browser which is injected by runtime environment of js eg, nodejs
+
+    console log implementation is present in the v8 engine src/d8/d8-console.cc and src/d8/d8-console.h
+-->
+</html>
