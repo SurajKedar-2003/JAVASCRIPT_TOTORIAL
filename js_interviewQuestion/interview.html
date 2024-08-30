@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <form action="">
+        <input type="text" id="fname" name="fname">
+        <input type="text" id="lname" name="lname">
+        <input type="submit" id="submit">
+    </form>
+
+    <script>
+        let fname = document.getElementById('fname');
+        let lname = document.getElementById('lname');
+
+        document.getElementById('submit').addEventListener('click', (e)=>{
+            e.preventDefault();
+            document.write(`YOUR NAME : ${fname.textContent.toUpperCase()} ${lname.textContent.toUpperCase()}`)
+            console.log('event click');
+            
+        }, false)
+    </script>
+</body>
+</html>
